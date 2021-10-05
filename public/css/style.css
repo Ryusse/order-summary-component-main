@@ -1,0 +1,200 @@
+
+
+:root{
+
+    /*Colors*/
+    --white: hsl(0, 0%, 100%);
+    --pale-blue: hsl(225, 100%, 94%);
+    --bright-blue: hsl(245, 75%, 52%);
+    --very-pale-blue: hsl(225, 100%, 98%);
+    --desaturated-blue: hsl(224, 23%, 55%);
+    --dark-blue: hsl(223, 47%, 23%);
+    --shadow-card: rgba(114,128,167,0.43);
+    --shadow-button: rgba(56,41,224,0.22);
+
+    /*Font*/
+    --red-hat-display : 'Red Hat Display', sans-serif;
+    /*Font size*/
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1rem;
+    --text-font-size: 1rem;
+    /*font weight*/
+    --regular-font-weight: 500;
+    --bold-font-weight: 700;
+    --black-font-weight: 900;
+}
+
+*{
+    margin: 0;
+    text-decoration:none;
+}
+
+html{
+    font-size: 16px;
+}
+
+body{
+    background-color: var(--pale-blue);
+    font-family: var(--red-hat-display);
+    font-size: var(--text-font-size);
+    font-weight: var(--regular-font-weight);
+    display: grid;
+    place-items: center;
+    grid-template-columns: 5vw auto 5vw;
+    grid-template-areas: ". card .";
+}
+
+h1,h2,a{
+    color: var(--dark-blue);
+    font-weight: var(--black-font-weight);
+    text-align: center;
+}
+
+h1{
+    font-size: var(--h1-font-size);
+}
+
+h2{
+    font-size: var(--h2-font-size);
+}
+
+p{
+    font-weight: var(--regular-font-weight);
+    color: var(--desaturated-blue);
+}
+
+.card{
+    grid-area: card;
+    margin: 5rem 0;
+    max-width: 23rem;
+    background-color: var(--white);
+    box-shadow: 16px 31px 47px -10px var(--shadow-card) ;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: 1.5rem 1fr 1.5rem;
+    grid-template-rows:  auto 1fr auto auto auto 1.5rem ;
+    row-gap: 1.5rem;
+    grid-template-areas: 
+        "image image image"
+        " .    content  .  "
+        " .     plan    .  "
+        " .      pay    .  "
+        " .     cancel  .  "
+        " .       .     .  ";
+}
+
+.card__image{
+    grid-area: image;
+    border-radius: 1rem 1rem 0 0;
+    width: 100%;
+    height: auto;
+}
+
+.card__content{
+    grid-area: content;
+}
+
+.card__text{
+    text-align: center;
+    line-height: 1.7;
+}
+
+.plan{
+    grid-area: plan;
+    margin: 1.1rem 0;
+    border-radius: 1rem;
+    padding: 0.9rem;
+    background-color: var(--very-pale-blue);
+    display: grid;
+    place-items: center;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.5rem 1.3rem;
+    grid-template-areas: 
+        "icon plan button"
+        "icon price button";
+}
+
+.plan__icon{
+    grid-area: icon;
+    width: 3rem;
+}
+
+.plan__title{
+    grid-area: plan;
+    justify-self: start;
+    margin: 0;
+}
+
+.plan__price{
+    grid-area: price;
+    justify-self: start;
+}
+
+.plan__button--change{
+    grid-area: button;
+    justify-self: end;
+    position: relative;
+    color: var(--bright-blue);
+    font-weight: var(--bold-font-weight);
+    transition: all .2s ease-in-out;
+}
+
+.plan__button--change::after,
+.plan__button--change::before{
+    content: "";
+    display:block;
+    position: absolute;
+    background-color: var(--bright-blue);
+    height: 0.1rem;
+    bottom: 0.5px;
+}
+
+.plan__button--change::after{
+    left: 0;
+    width: 68%;
+}
+
+.plan__button--change::before{
+    right: 0.5px;
+    width: 15%;
+
+}
+
+
+.card__button--pay{
+    grid-area: pay;
+    background-color: var(--bright-blue);
+    padding: 1.2rem;
+    border-radius: 1rem;
+    color: var(--white);
+    box-shadow: -2px 24px 26px -10px var(--shadow-button);
+    transition: all .2s ease-in-out;
+}
+
+.card__button--cancel{
+    grid-area: cancel;
+    color: var(--desaturated-blue);
+    transition: all .2s ease-in-out;
+}
+
+.plan__button--change:hover,
+.plan__button--change:focus,
+.card__button--pay:hover,
+.card__button--pay:focus{
+    opacity: .8;
+}
+
+.card__button--cancel:hover,
+.card__button--cancel:focus{
+    color: var(--dark-blue);
+}
+
+@media (min-width: 750px) {
+    body{
+        height: 100vh;
+    }
+
+    .card{
+        margin: 0;
+    }
+  }
